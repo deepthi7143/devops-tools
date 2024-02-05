@@ -2,7 +2,7 @@ resource "aws_instance" "web" {
   ami                    = "ami-0277155c3f0ab2930"      #change ami id for different region
   instance_type          = "t2.large"
   key_name               = "jenkins"              #change key name as per your setup
-  vpc_security_group_ids = [aws_security_group.devops-project-sg.id]
+  vpc_security_group_ids = [aws_security_group.devops-project-jenkins.id]
   user_data              = templatefile("./install.sh", {})
 
   tags = {
@@ -14,8 +14,8 @@ resource "aws_instance" "web" {
   }
 }
 
-resource "aws_security_group" "devops-project-sg" {
-  name        = "devops-project-sg"
+resource "aws_security_group" "devops-project-jenkins" {
+  name        = "devops-project-jenkins"
   description = "Allow TLS inbound traffic"
 
   ingress = [
@@ -40,6 +40,6 @@ resource "aws_security_group" "devops-project-sg" {
   }
 
   tags = {
-    Name = "devops-project"
+    Name = "devops-project-jenkins-tools"
   }
 }
