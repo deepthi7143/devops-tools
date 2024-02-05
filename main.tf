@@ -14,7 +14,7 @@ resource "aws_instance" "web" {
   }
 }
 
-resource "aws_security_group" "sg-0554adcfef2efbe4b" {
+resource "aws_security_group" "devops-project-sg" {
   name        = "devops-project-sg"
   description = "Allow TLS inbound traffic"
 
@@ -40,6 +40,6 @@ resource "aws_security_group" "sg-0554adcfef2efbe4b" {
   }
 
   tags = {
-    Name = "devops-project-veera"
+    Name = "devops-project"
   }
 }
